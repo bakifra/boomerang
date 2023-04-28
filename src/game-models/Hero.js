@@ -10,7 +10,9 @@ class Hero {
 
   moveLeft() {
     // Идём влево.
-    this.position -= 1;
+    if (this.position > 0) {
+      this.position -= 1;
+    }
   }
 
   moveRight() {
@@ -19,7 +21,7 @@ class Hero {
   }
 
   attack() {
-    // Атакуем.
+    // Атакуем
     this.boomerang.position = this.position + 1; // Устанавливаем начальную позицию бумеранга
     this.boomerang.fly();
   }

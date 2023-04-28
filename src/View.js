@@ -11,6 +11,7 @@ class View {
     // Тут всё рисуем.
     console.clear();
     console.log(this.game.track.join(''));
+    console.log(`Здоровье врага: ${this.game.enemy.health}`)
     console.log('\n\n');
     if (this.game.hero.lives > 0){
     console.log (`У тебя ${this.game.hero.lives} жизни`); }

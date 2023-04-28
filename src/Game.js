@@ -25,7 +25,7 @@ class Game {
   regenerateTrack() {
     // Сборка всего необходимого (герой, враг(и), оружие)
     // в единую структуру данных
-    this.track = new Array(this.trackLength).fill(" ");
+    this.track = new Array(this.trackLength).fill("_");
     this.track[this.hero.position] = this.hero.skin;
     this.track[this.enemy.position] = this.enemy.skin; // Добавьте эту строку
     if (
@@ -63,7 +63,11 @@ class Game {
 
   handleCollisions() {
     if (this.hero.position === this.enemy.position) {
-      this.hero.hurt();
+      this.hero.skin = '💀';
+      this.enemy.die()
+      setTimeout(()=>{
+      this.hero.die()
+    }, 10);
     }
 
     if (
@@ -71,10 +75,15 @@ class Game {
       this.boomerang.position - 1 === this.enemy.position ||
       this.boomerang.position + 1 === this.enemy.position
     ) {
-      this.enemy.die();
+      this.enemy.panch();
       // Обнуляем позицию бумеранга после столкновения с врагом
       // this.boomerang.position = -1;
-      this.enemy = new Enemy(this.trackLength); // Создаем нового врага
+      if (this.enemy.health === 0) {
+        this.enemy.skin = "💥";
+        setTimeout(() => {
+          this.enemy = new Enemy(this.trackLength);
+        }, 100);
+      } // Создаем нового врага
     }
   }
 }
