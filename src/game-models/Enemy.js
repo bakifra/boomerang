@@ -1,10 +1,10 @@
 // Враг.
 
 class Enemy {
-  constructor(trackLength, health = 4) {
+  constructor(trackLength) {
     this.generateSkin();
     this.position = trackLength - 1;
-    this.health = health;
+    this.rendHealth()
   }
 
   generateSkin() {
@@ -15,6 +15,10 @@ class Enemy {
   moveLeft() {
     // Идём влево.
     this.position -= 1;
+  }
+
+  rendHealth(){
+    this.health = Math.ceil(Math.random() * 10)
   }
 
   panch() {

@@ -11,6 +11,7 @@ class View {
     // Тут всё рисуем.
     console.clear();
     console.log(this.game.track.join(''));
+    console.log(`Здоровье врага: ${this.game.enemy.health}`)
     console.log('\n\n');
     console.log('\x1b[1m', '\x1b[35m');
     console.log(`Игра разработана \x1b[36m${yourTeamName} 🤟🤟🤟\n`);
