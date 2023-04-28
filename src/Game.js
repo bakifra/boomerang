@@ -70,10 +70,12 @@ class Game {
       this.boomerang.position - 1 === this.enemy.position ||
       this.boomerang.position + 1 === this.enemy.position
     ) {
-      this.enemy.die();
+      this.enemy.panch();
       // Обнуляем позицию бумеранга после столкновения с врагом
       // this.boomerang.position = -1;
-      this.enemy = new Enemy(this.trackLength); // Создаем нового врага
+      if (this.enemy.health === 0) {
+        this.enemy = new Enemy(this.trackLength);
+      } // Создаем нового врага
     }
   }
 }
