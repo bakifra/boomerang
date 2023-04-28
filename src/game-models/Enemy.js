@@ -4,7 +4,7 @@ class Enemy {
   constructor(trackLength) {
     this.generateSkin();
     this.position = trackLength - 1;
-    this.rendHealth()
+    this.rendHealth();
   }
 
   generateSkin() {
@@ -17,8 +17,8 @@ class Enemy {
     this.position -= 1;
   }
 
-  rendHealth(){
-    this.health = Math.ceil(Math.random() * 10)
+  rendHealth() {
+    this.health = Math.ceil(Math.random() * 10);
   }
 
   panch() {
@@ -31,9 +31,8 @@ class Enemy {
   }
 
   die() {
-      this.position = '?';
-      console.log('Enemy is dead!');
-    
+    this.position = '?';
+    console.log('Enemy is dead!');
   }
 }
 
