@@ -9,7 +9,8 @@ class Hero {
 
   moveLeft() {
     // Идём влево.
-    this.position -= 1;
+    if(this.position > 0){
+      this.position -= 1;}
   }
 
   moveRight() {
@@ -25,7 +26,7 @@ class Hero {
 
   die() {
     this.skin = '💀';
-    console.log('\x1b[1m\x1b[31m\nП О Т Р А Ч Е Н О 💀\n\n');
+    console.log('YOU ARE DEAD!💀');
     process.exit();
   }
 }
