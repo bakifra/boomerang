@@ -25,7 +25,7 @@ class Hero {
 
   die() {
     this.skin = '💀';
-    console.log('YOU ARE DEAD!💀');
+    console.log('\x1b[1m\x1b[31m\nП О Т Р А Ч Е Н О 💀\n\n');
     process.exit();
   }
 }
