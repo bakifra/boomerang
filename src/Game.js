@@ -62,7 +62,11 @@ class Game {
 
   handleCollisions() {
     if (this.hero.position === this.enemy.position) {
-      this.hero.die();
+      this.hero.skin = '💀';
+      this.enemy.die()
+      setTimeout(()=>{
+      this.hero.die()
+    }, 10);
     }
 
     if (
@@ -74,7 +78,10 @@ class Game {
       // Обнуляем позицию бумеранга после столкновения с врагом
       // this.boomerang.position = -1;
       if (this.enemy.health === 0) {
-        this.enemy = new Enemy(this.trackLength);
+        this.enemy.skin = "💥";
+        setTimeout(() => {
+          this.enemy = new Enemy(this.trackLength);
+        }, 100);
       } // Создаем нового врага
     }
   }
