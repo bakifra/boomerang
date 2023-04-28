@@ -39,7 +39,6 @@ class Game {
   check() {
     if (this.hero.position === this.enemy.position) {
       this.hero.hurt();
-      this.enemy.die();
     }
   }
 
@@ -63,11 +62,12 @@ class Game {
 
   handleCollisions() {
     if (this.hero.position === this.enemy.position) {
-      this.hero.skin = '💀';
-      this.enemy.die()
-      setTimeout(()=>{
-      this.hero.die()
-    }, 10);
+      this.hero.hurt();
+      this.enemy.die();
+
+      setTimeout(() => {
+        this.enemy = new Enemy(this.trackLength);
+      }, 100);
     }
 
     if (

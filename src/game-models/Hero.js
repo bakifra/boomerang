@@ -36,11 +36,11 @@ class Hero {
   }
 
   die() {
-    this.skin = '💀';
-    console.clear();
+    //console.clear();
+    //this.skin = '💀';
     console.log("\x1b[1m\x1b[31m\nП О Т Р А Ч Е Н О 💀\n\n");
     process.exit();
   }
 }
 
-module.exports = {Hero};
+module.exports = { Hero };
