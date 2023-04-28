@@ -12,7 +12,8 @@ class View {
     console.clear();
     console.log(this.game.track.join(''));
     console.log('\n\n');
-    console.log(`У тебя ${this.game.hero.lives} жизни`);
+    if (this.game.hero.lives > 0){
+    console.log (`У тебя ${this.game.hero.lives} жизни`); }
     console.log('\n');
     console.log('\x1b[1m', '\x1b[35m');
     console.log(`Игра разработана \x1b[36m${yourTeamName} 🤟🤟🤟\n`);

@@ -2,10 +2,10 @@
 // Или можно не импортировать,
 // а передавать все нужные объекты прямо из run.js при инициализации new Game().
 
-const {Hero} = require("./game-models/Hero");
+const { Hero } = require("./game-models/Hero");
 const Enemy = require("./game-models/Enemy");
 // const Boomerang = require('./game-models/Boomerang');
-const {View} = require("./View");
+const { View } = require("./View");
 const Boomerang = require("./game-models/Boomerang");
 
 // Основной класс игры.
@@ -63,7 +63,7 @@ class Game {
 
   handleCollisions() {
     if (this.hero.position === this.enemy.position) {
-      this.hero.die();
+      this.hero.hurt();
     }
 
     if (
