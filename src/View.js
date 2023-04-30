@@ -12,7 +12,7 @@ class View {
     console.clear();
     console.log(this.game.track.join(''));
     console.log('\n');
-    console.log(`Играет ${this.game.play.newUser}\n`);
+    //console.log(`Играет ${this.game.play.newUser}\n`);
     console.log(`Здоровье врага: ${this.game.enemy.health}\n`);
     console.log (`Твои жизни: ${this.game.hero.lives}\n`);
     console.log(`Counter: ${this.game.count}`);

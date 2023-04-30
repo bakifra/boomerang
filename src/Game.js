@@ -46,10 +46,6 @@ class Game {
   }
 
   play() {
-
-   console.log('Привет ковбой, как твое имя?\n');
-   const newUser = process.argv[2];
-   
     setInterval(() => {
       // Let's play!
       this.handleCollisions();
