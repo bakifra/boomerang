@@ -1,6 +1,8 @@
 // Бумеранг является оружием.
 // В дальнейшем можно добавить другое оружие.
 // Тогда можно будет создать класс Weapon и воспользоваться наследованием!
+const sound = require("sound-play");
+
 const hero = require('./Hero')
 class Boomerang {
   constructor(trackLength) {
@@ -14,6 +16,7 @@ class Boomerang {
 
     // Запускаем бумеранг на заданное расстояние
     for (let i = 1; i <= distance; i++) {
+      sound.play('src/sounds/spring.mp3', 0.2);
       setTimeout(() => this.moveRight(1), 100 * i);
     }
 
