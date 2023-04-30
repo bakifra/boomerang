@@ -16,6 +16,7 @@ class View {
     console.log(`\x1b[1m\x1b[32mТвои жизни: ${this.game.hero.lives}\n\x1b[0m`);
     console.log('\x1b[4m', this.game.track.join(""));
     console.log('\x1b[0m', this.game.track2.join(""));
+    console.log(`\n\x1b[1m\x1b[33mИграет: ${this.game.hero.user}\n`);
     console.log(`\n\x1b[1m\x1b[33mУбито врагов: ${this.game.count - 1}\n`);
     console.log("\x1b[1m", "\x1b[35m");
     console.log(`Игра разработана \x1b[36m${yourTeamName} 🤟🤟🤟\n`);

@@ -1,14 +1,17 @@
 // Наш герой.
 const sound = require("sound-play");
+const view = require('../View')
 
 class Hero {
-  constructor({ position, boomerang, lives = 3, direction = "r" }) {
+  constructor({ position, boomerang, user, points = 1, lives = 3, direction = "r" }) {
     this.skin = "🤠";
     this.position = position;
     this.boomerang = boomerang;
     this.lives = lives;
     this.direction = direction;
     this.positionY = 0;
+    this.user = user;
+    // this.points = points * 10;
   }
 
   moveLeft() {
@@ -65,9 +68,21 @@ class Hero {
     setTimeout(() => {
       sound.play("src/sounds/death.mp3", 1);
       console.log("\x1b[1m\x1b[31m\nП О Т Р А Ч Е Н О 💀\n\n");
+      // createUser ()
+      console.log(this.user, view.points);
       process.exit();
     }, 100);
   }
+
+  // async function createUser(name, points) {
+  //   try {  
+  //   const result = await user.create({name: name, points: points });
+  //   console.log(result);
+  // } 
+  //   catch ({ message }) {
+  //     console.log(message);
+  //   }
+  // };
 }
 
 module.exports = { Hero };
