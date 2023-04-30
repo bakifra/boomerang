@@ -22,6 +22,7 @@ class Game {
     this.enemy2 = new Enemy2(trackLength, this.count);
     this.view = new View(this);
     this.track = [];
+    this.track2 = [];
     this.regenerateTrack();
     this.count = 1;
   }
@@ -30,7 +31,13 @@ class Game {
     // Сборка всего необходимого (герой, враг(и), оружие)
     // в единую структуру данных
     this.track = new Array(this.trackLength).fill("_");
-    this.track[this.hero.position] = this.hero.skin;
+    this.track2 = new Array(this.trackLength).fill(" ");
+    if (this.hero.positionY === 0) {
+      this.track[this.hero.position] = this.hero.skin;
+    }
+    if (this.hero.positionY === 1) {
+      this.track2[this.hero.position] = this.hero.skin;
+    }
     this.track[this.enemy2.position] = this.enemy2.skin;
     this.track[this.enemy.position] = this.enemy.skin; // Добавьте эту строку
     if (
@@ -74,7 +81,7 @@ class Game {
   }
 
   handleCollisions() {
-    if (this.hero.position === this.enemy.position) {
+    if (this.hero.position === this.enemy.position && this.hero.positionY === 0) {
       this.enemy.die();
 
       setTimeout(() => {
@@ -82,7 +89,7 @@ class Game {
         this.enemy = new Enemy(this.trackLength, this.count);
       }, 1);
     }
-    if (this.hero.position === this.enemy2.position) {
+    if (this.hero.position === this.enemy2.position && this.hero.positionY === 0) {
       this.enemy2.die();
 
       setTimeout(() => {
@@ -107,7 +114,7 @@ class Game {
         }, 100);
       } // Создаем нового врага
     }
-    if (this.hero.position === this.enemy2.position) {
+    if (this.hero.position === this.enemy2.position && this.hero.positionY === 0) {
       this.enemy2.die();
 
       setTimeout(() => {
