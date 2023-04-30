@@ -4,6 +4,7 @@
 
 const { Hero } = require("./game-models/Hero");
 const Enemy = require("./game-models/Enemy");
+
 // const Boomerang = require('./game-models/Boomerang');
 const { View } = require("./View");
 const Boomerang = require("./game-models/Boomerang");
@@ -45,6 +46,10 @@ class Game {
   }
 
   play() {
+
+   console.log('Привет ковбой, как твое имя?\n');
+   const newUser = process.argv[2];
+   
     setInterval(() => {
       // Let's play!
       this.handleCollisions();
@@ -61,7 +66,7 @@ class Game {
       }
 
       this.view.render(this.track);
-    }, 10); // Вы можете настроить частоту обновления игрового цикла
+    }, 100); // Вы можете настроить частоту обновления игрового цикла
   }
 
   handleCollisions() {
