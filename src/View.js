@@ -16,8 +16,6 @@ class View {
     console.log(`Здоровье левого врага: ${this.game.enemy2.health}\n`);
     console.log(`Твои жизни: ${this.game.hero.lives}\n`);
     console.log(`Counter: ${this.game.count-1}`);
-    console.log(`Counter: ${this.game.enemy2.count}`);
-    console.log(`${this.game.speed}`);
     console.log("\x1b[1m", "\x1b[35m");
     console.log(`Игра разработана \x1b[36m${yourTeamName} 🤟🤟🤟\n`);
     console.log("\x1b[0m");
