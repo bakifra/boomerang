@@ -4,6 +4,7 @@
 
 const keypress = require('keypress');
 const Enemy = require('./game-models/Enemy');
+const Enemy2 = require('./game-models/Enemy2');
 
 // Управление.
 // Настроим соответствия нажатий на клавиши и действий в игре.
@@ -27,6 +28,8 @@ function runInteractiveConsole(game) {
       if (key.name === 'r') {
         game.enemy.die();
         game.enemy = new Enemy(game.trackLength);
+        game.enemy2.die();
+        game.enemy2 = new Enemy2(game.trackLength);
       }
       // Прерывание программы.
       if (key.ctrl && key.name === 'c') {
