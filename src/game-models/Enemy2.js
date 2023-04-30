@@ -1,4 +1,5 @@
 // Враг.
+const sound = require('sound-play');
 
 class Enemy2 {
   constructor(trackLength, count) {
@@ -23,6 +24,7 @@ class Enemy2 {
   }
 
   panch() {
+    sound.play('src/sounds/mobhurt.mp3');
     if (this.health > 0) {
       this.position -= 3;
       this.health -= 1;
