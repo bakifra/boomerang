@@ -2,29 +2,39 @@
 const sound = require('sound-play');
 
 class Hero {
-  constructor({ position, boomerang, lives = 3 }) {
+  constructor({
+    position, boomerang, lives = 3, direction = 'r',
+  }) {
     this.skin = '🤠';
     this.position = position;
     this.boomerang = boomerang;
     this.lives = lives;
+    this.direction = direction;
   }
 
   moveLeft() {
     // Идём влево.
     if (this.position > 0) {
       this.position -= 1;
+      this.direction = 'l';
     }
   }
 
   moveRight() {
     // Идём вправо.
     this.position += 1;
+    this.direction = 'r';
   }
 
   attack() {
     // Атакуем
+    if(this.direction === 'r'){
     this.boomerang.position = this.position + 1; // Устанавливаем начальную позицию бумеранга
-    this.boomerang.fly();
+    this.boomerang.flyRight();}
+    if(this.direction === 'l'){
+      this.boomerang.position = this.position - 1; // Устанавливаем начальную позицию бумеранга
+      this.boomerang.flyLeft();
+    }
   }
 
   hurt() {
