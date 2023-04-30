@@ -1,4 +1,5 @@
 // Наш герой.
+const sound = require('sound-play');
 
 class Hero {
   constructor({
@@ -40,6 +41,7 @@ class Hero {
   hurt() {
     const skins = ['🥴', '😃', '🤠'];
     this.lives -= 1;
+    sound.play('src/sounds/ouch.mp3', 1);
     this.skin = skins[this.lives - 1];
     if (this.lives === 0) {
       this.die();
@@ -47,11 +49,12 @@ class Hero {
   }
 
   die() {
-    // console.clear();
-    this.skin = '💀';
-    console.log('\x1b[1m\x1b[31m\nП О Т Р А Ч Е Н О 💀\n\n');
+    //console.clear();
+    //this.skin = '💀';
     setTimeout(() => {
-      process.exit();
+    sound.play('src/sounds/death.mp3', 1);
+    console.log("\x1b[1m\x1b[31m\nП О Т Р А Ч Е Н О 💀\n\n");
+    process.exit();
     }, 100);
   }
 }

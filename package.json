@@ -9,7 +9,8 @@
     "pg": "^8.7.3",
     "pg-hstore": "^2.3.4",
     "play-sound": "^1.1.5",
-    "sequelize": "^6.21.0"
+    "sequelize": "^6.21.0",
+    "sound-play": "^1.1.0"
   },
   "devDependencies": {
     "eslint": "^8.18.0",
