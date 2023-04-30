@@ -8,7 +8,7 @@ const Enemy2 = require("./game-models/Enemy2");
 // const Boomerang = require('./game-models/Boomerang');
 const { View } = require("./View");
 const Boomerang = require("./game-models/Boomerang");
-const sound = require('sound-play')
+const sound = require("sound-play");
 
 // Основной класс игры.
 // Тут будут все настройки, проверки, запуск.
@@ -51,8 +51,7 @@ class Game {
   }
 
   play() {
-
-    // sound.play('src/sounds/theme.mp3', 1);
+    sound.play("src/sounds/theme.mp3", 1);
 
     setInterval(() => {
       // Let's play!
