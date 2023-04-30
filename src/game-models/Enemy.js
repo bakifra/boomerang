@@ -31,9 +31,10 @@ class Enemy {
   }
 
   die() {
+    this.skin = "💥";
     this.position = '?';
     console.log('Enemy is dead!');
   }
 }
 
-module.exports = Enemy;
+module.exports = Enemy

@@ -15,11 +15,13 @@ class Game {
   constructor({ trackLength }) {
     this.trackLength = trackLength;
     this.boomerang = new Boomerang(trackLength);
-    this.hero = new Hero({ position: 0, boomerang: this.boomerang });
+    this.hero = new Hero({ position: 25, boomerang: this.boomerang });
     this.enemy = new Enemy(trackLength);
     this.view = new View(this);
     this.track = [];
     this.regenerateTrack();
+    this.count = 0;
+    this.speed = 100;
   }
 
   regenerateTrack() {
@@ -47,27 +49,29 @@ class Game {
       // Let's play!
       this.handleCollisions();
       this.regenerateTrack();
-
+      if ((this.count === 2)) {
+        this.speed = 10;
+      }
       // Добавьте логику движения врагов, например, двигаться влево
       this.enemy.moveLeft();
 
       // Если враг достиг края трека, перемещаем его в начало
-      if (this.enemy.position < 0) {
+      if (this.enemy.position === 0) {
         this.enemy.position = this.trackLength - 1;
       }
 
       this.view.render(this.track);
-    }, 100); // Вы можете настроить частоту обновления игрового цикла
+    }, 10); // Вы можете настроить частоту обновления игрового цикла
   }
 
   handleCollisions() {
     if (this.hero.position === this.enemy.position) {
-      this.hero.hurt();
       this.enemy.die();
 
       setTimeout(() => {
+        this.hero.hurt();
         this.enemy = new Enemy(this.trackLength);
-      }, 100);
+      }, 1);
     }
 
     if (
@@ -79,6 +83,7 @@ class Game {
       // Обнуляем позицию бумеранга после столкновения с врагом
       // this.boomerang.position = -1;
       if (this.enemy.health === 0) {
+        this.count+=1
         this.enemy.skin = "💥";
         setTimeout(() => {
           this.enemy = new Enemy(this.trackLength);
