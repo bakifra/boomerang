@@ -1,12 +1,12 @@
 // Враг.
 const sound = require('sound-play');
 
-class Enemy {
+class Enemy2 {
   constructor(trackLength, count = 1) {
     this.generateSkin();
-    this.position = trackLength-2;
+    this.position = 1;
     this.count = count;
-    this.rendHealth(count);
+    this.rendHealth(this.count);
   }
 
   generateSkin() {
@@ -14,9 +14,9 @@ class Enemy {
     this.skin = skins[Math.floor(Math.random() * skins.length)];
   }
 
-  moveLeft() {
+  moveRight() {
     // Идём влево.
-    this.position -= 1;
+    this.position += 1;
   }
 
   rendHealth(def) {
@@ -26,7 +26,7 @@ class Enemy {
   panch() {
     sound.play('src/sounds/mobhurt.mp3');
     if (this.health > 0) {
-      this.position += 3;
+      this.position -= 3;
       this.health -= 1;
     } else {
       this.die();
@@ -34,10 +34,10 @@ class Enemy {
   }
 
   die() {
-    this.skin = "💥";
+    this.skin = '💥';
     this.position = '?';
     console.log('Enemy is dead!');
   }
 }
 
-module.exports = Enemy
+module.exports = Enemy2;
