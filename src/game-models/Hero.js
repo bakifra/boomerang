@@ -9,6 +9,7 @@ class Hero {
     this.boomerang = boomerang;
     this.lives = lives;
     this.direction = direction;
+    this.positionY = 0
   }
 
   moveLeft() {

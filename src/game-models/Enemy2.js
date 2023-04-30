@@ -1,7 +1,7 @@
 // Враг.
 
 class Enemy2 {
-  constructor(trackLength, count) {
+  constructor(trackLength, count = 1) {
     this.generateSkin();
     this.position = 1;
     this.count = count;
@@ -19,7 +19,7 @@ class Enemy2 {
   }
 
   rendHealth(def) {
-    this.health = Math.ceil(Math.random() * 10);
+    this.health = Math.ceil(Math.random() * def);
   }
 
   panch() {

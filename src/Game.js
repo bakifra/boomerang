@@ -17,7 +17,7 @@ class Game {
     this.trackLength = trackLength;
     this.boomerang = new Boomerang(trackLength);
     this.hero = new Hero({ position: 25, boomerang: this.boomerang });
-    this.enemy = new Enemy(trackLength);
+    this.enemy = new Enemy(trackLength, this.count);
     this.enemy2 = new Enemy2(trackLength, this.count);
     this.view = new View(this);
     this.track = [];
@@ -76,7 +76,7 @@ class Game {
 
       setTimeout(() => {
         this.hero.hurt();
-        this.enemy = new Enemy(this.trackLength);
+        this.enemy = new Enemy(this.trackLength, this.count);
       }, 1);
     }
     if (this.hero.position === this.enemy2.position) {
@@ -100,7 +100,7 @@ class Game {
         this.count += 1;
         this.enemy.skin = "💥";
         setTimeout(() => {
-          this.enemy = new Enemy(this.trackLength);
+          this.enemy = new Enemy(this.trackLength, this.count);
         }, 100);
       } // Создаем нового врага
     }
