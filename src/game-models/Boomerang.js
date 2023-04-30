@@ -34,6 +34,7 @@ class Boomerang {
 
     // Запускаем бумеранг на заданное расстояние
     for (let i = 1; i <= distance; i++) {
+      sound.play('src/sounds/spring.mp3', 0.2);
       setTimeout(() => this.moveLeft(1), 100 * i);
     }
 

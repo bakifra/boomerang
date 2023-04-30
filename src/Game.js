@@ -30,7 +30,7 @@ class Game {
   regenerateTrack() {
     // Сборка всего необходимого (герой, враг(и), оружие)
     // в единую структуру данных
-    this.track = new Array(this.trackLength).fill("_");
+    this.track = new Array(this.trackLength).fill(" ");
     this.track2 = new Array(this.trackLength).fill(" ");
     if (this.hero.positionY === 0) {
       this.track[this.hero.position] = this.hero.skin;
@@ -58,7 +58,7 @@ class Game {
   }
 
   play() {
-    sound.play("src/sounds/theme.mp3", 1);
+    // sound.play("src/sounds/theme.mp3", 1);
 
     setInterval(() => {
       // Let's play!

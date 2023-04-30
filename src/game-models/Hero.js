@@ -60,7 +60,7 @@ class Hero {
   }
 
   die() {
-    //console.clear();
+    console.clear();
     //this.skin = '💀';
     setTimeout(() => {
       sound.play("src/sounds/death.mp3", 1);
