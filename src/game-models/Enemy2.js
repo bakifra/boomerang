@@ -1,11 +1,11 @@
 // Враг.
 
-class Enemy {
+class Enemy2 {
   constructor(trackLength, count) {
     this.generateSkin();
-    this.position = trackLength-2;
+    this.position = 1;
     this.count = count;
-    this.rendHealth();
+    this.rendHealth(this.count);
   }
 
   generateSkin() {
@@ -13,18 +13,18 @@ class Enemy {
     this.skin = skins[Math.floor(Math.random() * skins.length)];
   }
 
-  moveLeft() {
+  moveRight() {
     // Идём влево.
-    this.position -= 1;
+    this.position += 1;
   }
 
-  rendHealth() {
+  rendHealth(def) {
     this.health = Math.ceil(Math.random() * 10);
   }
 
   panch() {
     if (this.health > 0) {
-      this.position += 3;
+      this.position -= 3;
       this.health -= 1;
     } else {
       this.die();
@@ -32,10 +32,10 @@ class Enemy {
   }
 
   die() {
-    this.skin = "💥";
+    this.skin = '💥';
     this.position = '?';
     console.log('Enemy is dead!');
   }
 }
 
-module.exports = Enemy
+module.exports = Enemy2;
