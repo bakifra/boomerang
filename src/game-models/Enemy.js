@@ -2,11 +2,11 @@
 const sound = require('sound-play');
 
 class Enemy {
-  constructor(trackLength, count) {
+  constructor(trackLength, count = 1) {
     this.generateSkin();
     this.position = trackLength-2;
     this.count = count;
-    this.rendHealth();
+    this.rendHealth(count);
   }
 
   generateSkin() {
@@ -19,8 +19,8 @@ class Enemy {
     this.position -= 1;
   }
 
-  rendHealth() {
-    this.health = Math.ceil(Math.random() * 10);
+  rendHealth(def) {
+    this.health = Math.ceil(Math.random() * def);
   }
 
   panch() {
