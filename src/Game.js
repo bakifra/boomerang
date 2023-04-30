@@ -58,7 +58,7 @@ class Game {
   }
 
   play() {
-    // sound.play("src/sounds/theme.mp3", 1);
+    sound.play("src/sounds/theme.mp3", 1);
 
     setInterval(() => {
       // Let's play!
