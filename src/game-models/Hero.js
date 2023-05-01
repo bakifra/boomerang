@@ -1,9 +1,11 @@
+/* eslint-disable class-methods-use-this */
 // Наш герой.
 const sound = require("sound-play");
-const view = require('../View')
+const view = require("../View");
+const { User } = require("../../db/models");
 
 class Hero {
-  constructor({ position, boomerang, user, points = 1, lives = 3, direction = "r" }) {
+  constructor({ position, boomerang, user, lives = 3, direction = "r" }) {
     this.skin = "🤠";
     this.position = position;
     this.boomerang = boomerang;
@@ -11,7 +13,7 @@ class Hero {
     this.direction = direction;
     this.positionY = 0;
     this.user = user;
-    // this.points = points * 10;
+    this.points = 0;
   }
 
   moveLeft() {
@@ -35,8 +37,8 @@ class Hero {
   }
 
   moveUp() {
-    if(this.positionY === 1){
-      this.positionY -= 1
+    if (this.positionY === 1) {
+      this.positionY -= 1;
     }
   }
 
@@ -62,27 +64,31 @@ class Hero {
     }
   }
 
+  count() {
+    this.points += 10;
+  }
+
   die() {
     console.clear();
-    //this.skin = '💀';
+    // this.skin = '💀';
     setTimeout(() => {
       sound.play("src/sounds/death.mp3", 1);
-      console.log("\x1b[1m\x1b[31m\nП О Т Р А Ч Е Н О 💀\n\n");
-      // createUser ()
-      console.log(this.user, view.points);
+      console.log("\x1b[1m\x1b[31m\nП О Т Р А Ч Е Н О 💀\x1b[0m\n\n");
+
+      createUser(createUser(this.user, this.points));
+      console.log(`\x1b[1m\x1b[1m${this.user} набрал ${this.points} очков!`);
       process.exit();
     }, 100);
   }
-
-  // async function createUser(name, points) {
-  //   try {  
-  //   const result = await user.create({name: name, points: points });
-  //   console.log(result);
-  // } 
-  //   catch ({ message }) {
-  //     console.log(message);
-  //   }
-  // };
+}
+async function createUser(name, points) {
+  try {
+    const result = await User.create({ name, points });
+    console.log(createUser(name, points));
+    console.log(result);
+  } catch ({ message }) {
+    console.log(message);
+  }
 }
 
 module.exports = { Hero };

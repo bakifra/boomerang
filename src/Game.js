@@ -115,6 +115,7 @@ class Game {
       // this.boomerang.position = -1;
       if (this.enemy.health === 0) {
         this.count += 1;
+        this.hero.count()
         this.enemy.skin = "💥";
         setTimeout(() => {
           this.enemy = new Enemy(this.trackLength, this.count);
@@ -140,6 +141,7 @@ class Game {
       // this.boomerang.position = -1;
       if (this.enemy2.health === 0) {
         this.count += 1;
+        this.hero.count()
         this.enemy2.skin = "💥";
         setTimeout(() => {
           this.enemy2 = new Enemy2(this.trackLength, this.count);
