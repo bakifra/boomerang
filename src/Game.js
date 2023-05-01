@@ -1,7 +1,7 @@
 // Импортируем всё необходимое.
 // Или можно не импортировать,
 // а передавать все нужные объекты прямо из run.js при инициализации new Game().
-
+const readlineSync = require('readline-sync');
 const { Hero } = require("./game-models/Hero");
 const Enemy = require("./game-models/Enemy");
 const Enemy2 = require("./game-models/Enemy2");
@@ -17,7 +17,7 @@ class Game {
   constructor({ trackLength }) {
     this.trackLength = trackLength;
     this.boomerang = new Boomerang(trackLength);
-    this.hero = new Hero({ position: 25, boomerang: this.boomerang });
+    this.hero = new Hero({ position: 25, boomerang: this.boomerang, user: this.greeting(), points: this.count });
     this.enemy = new Enemy(trackLength, this.count);
     this.enemy2 = new Enemy2(trackLength, this.count);
     this.view = new View(this);
@@ -25,7 +25,14 @@ class Game {
     this.track2 = [];
     this.regenerateTrack();
     this.count = 1;
+    // this.user = this.greeting();
   }
+
+  greeting() {
+    return readlineSync.question(
+      "Привет воин, как твое имя?\n"
+    );
+};
 
   regenerateTrack() {
     // Сборка всего необходимого (герой, враг(и), оружие)
@@ -58,7 +65,7 @@ class Game {
   }
 
   play() {
-    sound.play("src/sounds/theme.mp3", 1);
+ //   sound.play("src/sounds/theme.mp3", 1);
 
     setInterval(() => {
       // Let's play!
@@ -108,6 +115,7 @@ class Game {
       // this.boomerang.position = -1;
       if (this.enemy.health === 0) {
         this.count += 1;
+        this.hero.count()
         this.enemy.skin = "💥";
         setTimeout(() => {
           this.enemy = new Enemy(this.trackLength, this.count);
@@ -133,6 +141,7 @@ class Game {
       // this.boomerang.position = -1;
       if (this.enemy2.health === 0) {
         this.count += 1;
+        this.hero.count()
         this.enemy2.skin = "💥";
         setTimeout(() => {
           this.enemy2 = new Enemy2(this.trackLength, this.count);
