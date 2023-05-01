@@ -82,12 +82,15 @@ class Hero {
 
   die() {
     console.clear();
-    // this.skin = '💀';
-    setTimeout(async () => {
-      sound.play('src/sounds/death.mp3', 1);
-      console.log('\x1b[1m\x1b[31m\nП О Т Р А Ч Е Н О 💀\x1b[0m\n\n');
-      console.log(`\x1b[1m\x1b[1m${this.user} набрал ${this.points} очков!`);
-      await createUser(this.user, this.points);
+    this.skin = '💀';
+    setTimeout(() => {
+      sound.play("src/sounds/death.mp3", 1);
+      console.log("\x1b[1m\x1b[31m\nП О Т Р А Ч Е Н О 💀\x1b[0m\n\n");
+
+      createUser(createUser(this.user, this.points));
+      console.log(
+        `\x1b[1m\x1b[33m${this.user} набрал \x1b[32m${this.points} очков!`
+      );
       process.exit();
     }, 100);
   }
