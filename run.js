@@ -1,7 +1,5 @@
 // Основной файл.
 // Запускает игру.
-const readlineSync = require('readline-sync');
-
 const Game = require('./src/Game');
 const runInteractiveConsole = require('./src/keyboard');
 

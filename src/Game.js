@@ -30,7 +30,7 @@ class Game {
 
   greeting() {
     return readlineSync.question(
-      "Привет воин, как твое имя?\n"
+      "Как тебя зовут, ковбой?\n"
     );
 };
 
