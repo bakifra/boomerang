@@ -4,7 +4,7 @@ const sound = require('sound-play');
 class Enemy {
   constructor(trackLength, count = 1) {
     this.generateSkin();
-    this.position = trackLength-2;
+    this.position = trackLength - 2;
     this.count = count;
     this.rendHealth(count);
   }
@@ -34,10 +34,10 @@ class Enemy {
   }
 
   die() {
-    this.skin = "💥";
+    this.skin = '💥';
     this.position = '?';
     console.log('Enemy is dead!');
   }
 }
 
-module.exports = Enemy
+module.exports = Enemy;

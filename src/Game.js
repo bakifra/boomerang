@@ -34,8 +34,10 @@ class Game {
   }
 
   greeting() {
-    return readlineSync.question("Привет воин, как твое имя?\n");
-  }
+    return readlineSync.question(
+      "Как тебя зовут, ковбой?\n"
+    );
+};
 
   regenerateTrack() {
     // Сборка всего необходимого (герой, враг(и), оружие)

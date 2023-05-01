@@ -1,12 +1,24 @@
+/* eslint-disable lines-between-class-members */
 /* eslint-disable class-methods-use-this */
 // Наш герой.
-const sound = require("sound-play");
-const view = require("../View");
-const { User } = require("../../db/models");
+const sound = require('sound-play');
+const view = require('../View');
+const { User } = require('../../db/models');
 
+async function createUser(name, points) {
+  try {
+    const result = await User.create({ name, points });
+    // console.log(createUser(name, points));
+    console.log(result);
+  } catch ({ message }) {
+    console.log(message);
+  }
+}
 class Hero {
-  constructor({ position, boomerang, user, lives = 3, direction = "r" }) {
-    this.skin = "🤠";
+  constructor({
+    position, boomerang, user, lives = 3, direction = 'r',
+  }) {
+    this.skin = '🤠';
     this.position = position;
     this.boomerang = boomerang;
     this.lives = lives;
@@ -20,14 +32,14 @@ class Hero {
     // Идём влево.
     if (this.position > 0) {
       this.position -= 1;
-      this.direction = "l";
+      this.direction = 'l';
     }
   }
 
   moveRight() {
     // Идём вправо.
     this.position += 1;
-    this.direction = "r";
+    this.direction = 'r';
   }
 
   moveDown() {
@@ -44,20 +56,20 @@ class Hero {
 
   attack() {
     // Атакуем
-    if (this.direction === "r") {
+    if (this.direction === 'r') {
       this.boomerang.position = this.position + 1; // Устанавливаем начальную позицию бумеранга
       this.boomerang.flyRight();
     }
-    if (this.direction === "l") {
+    if (this.direction === 'l') {
       this.boomerang.position = this.position - 1; // Устанавливаем начальную позицию бумеранга
       this.boomerang.flyLeft();
     }
   }
 
   hurt() {
-    const skins = ["🥴", "😃", "🤠"];
+    const skins = ['🥴', '😃', '🤠'];
     this.lives -= 1;
-    sound.play("src/sounds/ouch.mp3", 1);
+    sound.play('src/sounds/ouch.mp3', 1);
     this.skin = skins[this.lives - 1];
     if (this.lives === 0) {
       this.die();
@@ -83,14 +95,7 @@ class Hero {
     }, 100);
   }
 }
-async function createUser(name, points) {
-  try {
-    const result = await User.create({ name, points });
-    console.log(createUser(name, points));
-    console.log(result);
-  } catch ({ message }) {
-    console.log(message);
-  }
-}
+
+// createUser('askjdnfjsnf', 71623)
 
 module.exports = { Hero };
